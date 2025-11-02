@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2D Node Editor</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%231a1f2e'/%3E%3Cpath d='M18 40 L30 16 L42 40 Z' fill='%23a78bfa'/%3E%3C/svg%3E" />
+  </head>
+  <body>
+    <div id="topbar" class="topbar">
+      <div class="brand">
+        <span class="logo-dot"></span>
+        <span class="title">Node Studio</span>
+      </div>
+      <div class="actions">
+        <div class="dropdown" id="add-node-dropdown">
+          <button class="btn" id="add-node-btn">Add Node ?</button>
+          <div class="dropdown-menu" id="add-node-menu" hidden></div>
+        </div>
+        <button class="btn" id="reset-view-btn">Reset View</button>
+        <button class="btn" id="export-btn">Export</button>
+        <button class="btn" id="import-btn">Import</button>
+        <button class="btn ghost" id="help-btn">?</button>
+      </div>
+    </div>
+
+    <main id="editor" class="editor">
+      <div id="viewport" class="viewport">
+        <div id="workspace" class="workspace">
+          <svg id="wires" class="wires" xmlns="http://www.w3.org/2000/svg"></svg>
+          <div id="nodes-layer" class="nodes-layer"></div>
+        </div>
+      </div>
+      <div id="temp-wire-layer" class="temp-wire-layer">
+        <svg id="temp-wire" class="temp-wire" xmlns="http://www.w3.org/2000/svg"></svg>
+      </div>
+    </main>
+
+    <div id="context-menu" class="context-menu" hidden></div>
+    <input type="file" id="import-file" accept="application/json" hidden />
+
+    <dialog id="help-dialog" class="modal">
+      <form method="dialog" class="modal-card">
+        <header class="modal-header">
+          <h3>Help</h3>
+          <button class="btn ghost" value="cancel">?</button>
+        </header>
+        <section class="modal-body">
+          <ul>
+            <li>Right click to open context menu.</li>
+            <li>Drag background to pan, scroll to zoom.</li>
+            <li>Drag from an output port to an input port to connect.</li>
+            <li>Click a node or connection to select; press Delete to remove.</li>
+            <li>Display nodes show the final image; other nodes show previews.</li>
+          </ul>
+        </section>
+        <footer class="modal-footer">
+          <button class="btn" value="ok">Close</button>
+        </footer>
+      </form>
+    </dialog>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
